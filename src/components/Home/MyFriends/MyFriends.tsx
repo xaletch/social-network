@@ -20,7 +20,7 @@ export const MyFriends = () => {
             <div className='flex items-center justify-between'>
               <h2 className='text-2xl'>Мои друзья:</h2>
               <div>
-                <span className='text-2xl'>3</span>
+                <span className='text-1xl'>3</span>
               </div>
             </div>
             <div className='mt-2 flex flex-col gap-3'>

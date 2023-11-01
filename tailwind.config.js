@@ -46,6 +46,9 @@ export default {
         'block-friend-hover': '#EFE5FF',
         'purple-300': '#D0B2FF',
         'purple-500': '#BD94FF',
+        'loading': '#CCCCCC',
+        'online': '#B282FF',
+        'offline': '#4f4f4f'
       },
     extend: {},
   },

@@ -8,7 +8,7 @@ export const NewsPost = () => {
       <div className='p-2 flex justify-between items-center'>
         <Link to={''}>
           <div className='flex items-center'>
-            <div className='w-[40px] h-[40px] bg-grey rounded-full'>
+            <div className='w-[40px] h-[40px] bg-loading rounded-full'>
               <img className='rounded-full' src="https://cs13.pikabu.ru/post_img/2023/02/13/8/1676295972191096669.jpg" alt="" />
             </div>
             <div className='ml-2 flex flex-col'>
