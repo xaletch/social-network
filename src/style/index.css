@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #F5F5F5;
+}
+
+input {
+    outline: none;
+}
+
+img {
+    user-select: none;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.focus:focus {
+    box-shadow: 0 0 0 2px #C6A6F8;
+    transition: box-shadow .2s linear;
+}
+
+.shadow-friend:hover {
+    box-shadow: 0 1px 4px #C6A6F8;
+    transition: box-shadow .2s linear;
+}
+
+.shadow-search {
+    box-shadow: 0 1px 4px #C6A6F8;
+}
+
+.backgroundImage {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* MESSAGE GRID */
+.message-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+.grid-left {
+    grid-column: 1 / 2 span;
+}
+.grid-right {
+    grid-column: 2 / 2 span;
+}
+
+.input-transition {
+    width: 0;
+    padding: 0;
+    transition: all .5s;
+}
+.input-transition button {
+    display: none;
+}
+.input-transition.active {
+    padding: 8px 28px;
+    width: 100%;
+}
+.msg-input button {
+    display: none;
+    transition: all .5s;
+}
+.msg-input.active button  {
+    display: flex;
+}
+
+/* MESSAGE INPUT */
+.message-input {}
+.scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+.scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+.scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
