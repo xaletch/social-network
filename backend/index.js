@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -19,6 +20,7 @@ mongoose
 const PORT=5000;
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
@@ -31,7 +33,7 @@ app.get('/register', regValidation, register);
 // АВТОРИЗАЦИЯ
 app.post('/login', login);
 // ПРОВЕРКА USER
-app.get('/me', CheckAuth, authMe);
+app.get('/account', CheckAuth, authMe);
 
 app.listen(PORT, (err) => {
     if(err) {

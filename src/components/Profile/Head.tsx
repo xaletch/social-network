@@ -2,13 +2,20 @@ import React from 'react'
 import { CheckMark } from '../CheckMark'
 import { UserOnlineOrOffline } from '../UserOnlineOrOffline/UserOnlineOrOffline'
 
-export const Head = () => {
+type Profile = {
+    avatarUrl?: string | undefined,
+    name?: string | undefined,
+    surname?: string | undefined,
+    username?: string | undefined,
+}
+
+export const Head: React.FC<Profile> = ({ avatarUrl, name, surname }) => {
   return (
     <div className=''>
         <div className='flex gap-4'>
             <div className='flex'>
                 <div className='w-[280px] h-[280px] bg-loading rounded-xl'>
-                    <img className='rounded-xl' src="https://cs13.pikabu.ru/post_img/2023/02/13/8/1676295972191096669.jpg" alt="avatar" />
+                    <img className='rounded-xl' src={avatarUrl} alt="avatar" />
                 </div>
             </div>
             <div className='flex flex-col w-full gap-3'>
@@ -18,7 +25,7 @@ export const Head = () => {
                 <div className='flex justify-between'>
                     <div>
                         <div className='flex items-center gap-1'>
-                            <h2 className='text-3xl font-medium'>Кирилл Колесников</h2>
+                            <h2 className='text-3xl font-medium'>{name} {surname}</h2>
                             <CheckMark />
                             <div className='ml-1'>
                                 <UserOnlineOrOffline />

@@ -81,17 +81,17 @@ exports.login = async (req, res) => {
 
 exports.authMe = async (req, res) => {
     try {
-        const user = await UserModel.findById(req.userId())
+        const user = await UserModel.findById(req.userId);
 
         if (!user) {
             return res.status(404).json({
-                message: 'Пользователь не найден'
+                message: 'Пользователь не найден',
             });
         };
 
         const { passwordHash, ...userData } = user._doc;
 
-        res.json(...userData);
+        res.json(userData);
     }
     catch (err) {
         console.error('ME ACCOUNT', err);
