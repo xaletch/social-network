@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // РЕГИСТАЦИЯ
-app.get('/register', regValidation, register);
+app.post('/register', regValidation, register);
 // АВТОРИЗАЦИЯ
 app.post('/login', login);
 // ПРОВЕРКА USER

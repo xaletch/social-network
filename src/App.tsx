@@ -34,7 +34,7 @@ function App() {
       }
     };
     authMe();
-  }, []);
+  }, [isAuth]);
 
   return (
     <div className="App">
@@ -43,7 +43,7 @@ function App() {
         <Header avatarUrl={userData?.avatarUrl} name={userData?.name} surname={userData?.surname} username={userData?.username} />
         <Routes>
           <Route path='login' element={<LogIn isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
-          <Route path='register' element={<Register/>}></Route>
+          <Route path='register' element={<Register isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>
           <Route path='home' element={<Home />}></Route>
           <Route path='message' element={<Message />}></Route>
           <Route path={`profile/${userData?.username}`} element={<Profile userData={userData} />}></Route>
