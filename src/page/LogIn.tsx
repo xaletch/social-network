@@ -40,9 +40,8 @@ export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
     }
   };
 
-  if (isAuth) {
-    return <Navigate to={'/home'} />
-  }
+  
+  const token = localStorage.getItem('token');
 
   return (
     <div className='container'>

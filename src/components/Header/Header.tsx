@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search } from './Search/Search';
+import { Search } from '../Search/Search';
+import { Menu } from './menu';
+
 
 interface DataInterface {
     avatarUrl?: string | undefined,
     name?: string | undefined,
     surname?: string | undefined,
     username?: string | undefined,
+    setMenuLogOut: Dispatch<SetStateAction<boolean>>,
 }
 
-export const Header: React.FC<DataInterface> = ({ avatarUrl, name, surname, username }) => {
+export const Header: React.FC<DataInterface> = ({ avatarUrl, name, surname, username, setMenuLogOut }) => {
+    const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+    const handleMenuOpen = () => {
+        setOpenMenu(!openMenu);
+    };
   return (
     <div className='w-screen fixed top-0 left-0 z-10 bg-secondary3'>
         <div className='container'>
@@ -38,17 +46,18 @@ export const Header: React.FC<DataInterface> = ({ avatarUrl, name, surname, user
                             </div>
                         </Link>
                     </div>
-                    <Link className='ml-7' to={`profile/${username}`}>
-                    <div className='flex items-center cursor-pointer'>
-                        <div className='w-[40px] h-[40px] bg-grey rounded-full'>
-                            <img className='rounded-full' src={avatarUrl} alt="" />
-                        </div>
-                        <div className='ml-2'>
-                            <p className='text-sm leading-none'>{name}</p>
-                            <p className='text-sm leading-none'>{surname}</p>
-                        </div>
+                    <div className='ml-7 relative' onMouseEnter={handleMenuOpen}>
+                        <Link className='flex items-center' to={`profile/${username}`}>
+                            <div className='w-[40px] h-[40px] bg-grey rounded-full'>
+                                <img className='rounded-full' src={avatarUrl} alt="" />
+                            </div>
+                            <div className='ml-2'>
+                                <p className='text-sm leading-none'>{name}</p>
+                                <p className='text-sm leading-none'>{surname}</p>
+                            </div>
+                        </Link>
+                        {openMenu && <Menu setOpenMenu={setOpenMenu} setMenuLogOut={setMenuLogOut} />}
                     </div>
-                    </Link>
                 </div>
             </div>
         </div>

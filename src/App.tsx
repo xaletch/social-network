@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './style/index.css';
 
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { LogIn } from './page/LogIn';
 import { Register } from './page/Register';
 import { Home } from './page/Home';
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
 import { Message } from './page/Message';
 import { Profile } from './page/Profile';
 import axios from './axios';
+import { LogOut } from './components/Menu/LogOut';
 
 type Data = {
   avatarUrl: string,
@@ -21,6 +22,19 @@ type Data = {
 function App() {
   const [userData, setUserData] = useState<Data | undefined>();
   const [isAuth, setIsAuth] = useState<boolean>(false);
+
+  const [menuLogOut, setMenuLogOut] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    } else {
+      navigate('/home');
+    };
+  }, [token]);
 
   useEffect(() => {
     const authMe = async () => {
@@ -35,19 +49,25 @@ function App() {
     };
     authMe();
   }, [isAuth]);
-
+  
   return (
     <div className="App">
       <div className=''>
-      {!localStorage.getItem('token') && <Navigate to={'/login'}/>}
-        <Header avatarUrl={userData?.avatarUrl} name={userData?.name} surname={userData?.surname} username={userData?.username} />
+      {localStorage.getItem('token') && (<Header avatarUrl={userData?.avatarUrl} name={userData?.name} surname={userData?.surname} username={userData?.username} setMenuLogOut={setMenuLogOut} />)}
         <Routes>
           <Route path='login' element={<LogIn isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
           <Route path='register' element={<Register isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>
-          <Route path='home' element={<Home />}></Route>
-          <Route path='message' element={<Message />}></Route>
-          <Route path={`profile/${userData?.username}`} element={<Profile userData={userData} />}></Route>
+          {token ? (
+            <>
+            <Route path="home" element={<Home />} />
+            <Route path="message" element={<Message />} />
+            <Route path={`profile/${userData?.username}`} element={<Profile userData={userData} />} />
+          </>
+        ) : (
+          <Route path='login' element={<LogIn isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
+        )}
         </Routes>
+        {menuLogOut && <LogOut setMenuLogOut={setMenuLogOut} setIsAuth={setIsAuth} />}
       </div>
     </div>
   );
