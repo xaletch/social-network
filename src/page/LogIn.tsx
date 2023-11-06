@@ -28,7 +28,7 @@ export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
       const data = await axios.post('/login', {...formData});
       
       if ('token' in data.data) {
-        window.localStorage.setItem('token', data.data.token);
+        window.localStorage.setItem('logged_in', data.data.token);
       };
 
       setIsAuth(true);
@@ -41,7 +41,7 @@ export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
   };
 
   
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('logged_in');
 
   return (
     <div className='container'>

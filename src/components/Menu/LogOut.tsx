@@ -14,7 +14,7 @@ export const LogOut: React.FC<MenuInterface> = ({ setMenuLogOut, setIsAuth }) =>
     };
 
     const handleLogOut = () => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("logged_in");
         setMenuLogOut(false);
         setIsAuth(false);
     };
@@ -25,8 +25,8 @@ export const LogOut: React.FC<MenuInterface> = ({ setMenuLogOut, setIsAuth }) =>
                 <div className='p-6 px-8'>
                     <h3>Вы действительно хотите выйти с аккаунта</h3>
                     <div className='flex justify-center gap-6 mt-8'>
-                        <button className='p-1 px-8 bg-button text-white rounded' onClick={handleLogOut}>Да</button>
                         <button className='p-1 px-8 bg-button text-white rounded' onClick={handleClickCloseModal}>Нет</button>
+                        <button className='p-1 px-8 bg-button text-white rounded' onClick={handleLogOut}>Да</button>
                     </div>
                 </div>
             </div>

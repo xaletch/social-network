@@ -34,7 +34,7 @@ export const Register: React.FC<RegInterface> = ({ isAuth, setIsAuth }) => {
           setIsAuth(true);
 
           if ('token' in data.data) {
-            window.localStorage.setItem('token', data.data.token);
+            window.localStorage.setItem('logged_in', data.data.token);
           }
         }
         catch (err) {
@@ -54,11 +54,11 @@ export const Register: React.FC<RegInterface> = ({ isAuth, setIsAuth }) => {
               <div className='w-[70%]'>
                 <h2 className='text-3xl font-medium text-color-title'>Регистрация</h2>
                 <form className='form flex flex-col gap-3 mt-3' onSubmit={handleSubmit(onSubmit)}>
-                  <input className='p-2 px-3 outline-none rounded text-color-text' type='name' {...register('name', { required: 'Имя должно быть не короче 3 символов' })} placeholder='Имя'/>
-                  <input className='p-2 px-3 outline-none rounded text-color-text' type="name" {...register('surname', { required: 'Фамилия должна быть не короче 3 символов' })} placeholder='Фамилия'/>
-                  <input className='p-2 px-3 outline-none rounded text-color-text' type="name" {...register('username', { required: 'Данное имя пользователя уже занято' })} placeholder='Имя пользователя'/>
-                  <input className='p-2 px-3 outline-none rounded text-color-text' type="email" {...register('email', { required: 'Неверный email' })} placeholder='Ваш email'/>
-                  <input className='p-2 px-3 outline-none rounded text-color-text' type="password" {...register('password', { required: 'Пароль должен быть не менее 8 символов'})} placeholder='Придумайте пароль'/>
+                  <input className='p-2 px-3 outline-none rounded text-color-text focus' type='name' {...register('name', { required: 'Имя должно быть не короче 3 символов' })} placeholder='Имя'/>
+                  <input className='p-2 px-3 outline-none rounded text-color-text focus' type="name" {...register('surname', { required: 'Фамилия должна быть не короче 3 символов' })} placeholder='Фамилия'/>
+                  <input className='p-2 px-3 outline-none rounded text-color-text focus' type="name" {...register('username', { required: 'Данное имя пользователя уже занято' })} placeholder='Имя пользователя'/>
+                  <input className='p-2 px-3 outline-none rounded text-color-text focus' type="email" {...register('email', { required: 'Неверный email' })} placeholder='Ваш email'/>
+                  <input className='p-2 px-3 outline-none rounded text-color-text focus' type="password" {...register('password', { required: 'Пароль должен быть не менее 8 символов'})} placeholder='Придумайте пароль'/>
                   {/* <input className='p-2 px-3 outline-none rounded text-color-text' type="password" {...register('password', { required: true })} placeholder='Повторите пароль'/> */}
                   <div className='flex gap-4 mt-4'>
                     <button type='submit' className='p-2 px-5 rounded bg-button text-white'>Зарегистрироваться</button>

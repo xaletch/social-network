@@ -26,6 +26,10 @@ img {
     transition: box-shadow .2s linear;
 }
 
+.input-shadow {
+    box-shadow: 0 0 0 1px #c5a6f8a6;
+}
+
 .incorrect {
     box-shadow: 0 0 0 2px #f08282;
 }

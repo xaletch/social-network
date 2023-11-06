@@ -26,11 +26,11 @@ function App() {
   const [menuLogOut, setMenuLogOut] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('logged_in');
 
   useEffect(() => {
     if (!token) {
-      navigate('/login');
+      navigate('/register');
     } else {
       navigate('/home');
     };
@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <div className=''>
-      {localStorage.getItem('token') && (<Header avatarUrl={userData?.avatarUrl} name={userData?.name} surname={userData?.surname} username={userData?.username} setMenuLogOut={setMenuLogOut} />)}
+      {localStorage.getItem('logged_in') && (<Header avatarUrl={userData?.avatarUrl} name={userData?.name} surname={userData?.surname} username={userData?.username} setMenuLogOut={setMenuLogOut} />)}
         <Routes>
           <Route path='login' element={<LogIn isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
           <Route path='register' element={<Register isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>

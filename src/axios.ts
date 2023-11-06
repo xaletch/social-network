@@ -5,7 +5,7 @@ const Axios = axios.create({
 });
 
 Axios.interceptors.request.use((config: any) => {
-    config.headers.Authorization = window.localStorage.getItem('token');
+    config.headers.Authorization = window.localStorage.getItem('logged_in');
     return config;
 });
 
