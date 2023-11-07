@@ -14,8 +14,9 @@ export const Head: React.FC<Profile> = ({ avatarUrl, name, surname }) => {
     <div className=''>
         <div className='flex gap-4'>
             <div className='flex'>
-                <div className='w-[280px] h-[280px] bg-loading rounded-xl'>
-                    <img className='rounded-xl' src={avatarUrl} alt="avatar" />
+                <div className='w-[280px] h-[280px] bg-avatar1 rounded-xl flex items-center justify-center text-8xl text-white'>
+                    {name && name[0]}
+                    {avatarUrl && <img className='rounded-xl' src={avatarUrl} alt="avatar" />}
                 </div>
             </div>
             <div className='flex flex-col w-full gap-3'>

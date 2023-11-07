@@ -48,8 +48,9 @@ export const Header: React.FC<DataInterface> = ({ avatarUrl, name, surname, user
                     </div>
                     <div className='ml-7 relative' onMouseEnter={handleMenuOpen}>
                         <Link className='flex items-center' to={`profile/${username}`}>
-                            <div className='w-[40px] h-[40px] bg-grey rounded-full'>
-                                <img className='rounded-full' src={avatarUrl} alt="" />
+                            <div className='w-[40px] h-[40px] bg-avatar1 rounded-full flex justify-center items-center text-white'>
+                                {name && name[0]}
+                                {avatarUrl && <img className='rounded-full' src={avatarUrl} alt="" />}
                             </div>
                             <div className='ml-2'>
                                 <p className='text-sm leading-none'>{name}</p>

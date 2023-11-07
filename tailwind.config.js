@@ -16,6 +16,7 @@ export default {
         '5xl': '1.953rem',
         '6xl': '2.441rem',
         '7xl': '3.052rem',
+        '8xl': '5rem',
       },
       colors: {
         transparent: 'transparent',
@@ -48,7 +49,8 @@ export default {
         'purple-500': '#BD94FF',
         'loading': '#CCCCCC',
         'online': '#B282FF',
-        'offline': '#4f4f4f'
+        'offline': '#4f4f4f',
+        'avatar1': '#78dcca',
       },
     extend: {},
   },
