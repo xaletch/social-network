@@ -2,20 +2,24 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Navigate, Link } from 'react-router-dom';
 import axios from '../axios';
+import { useDispatch } from 'react-redux';
+import { fetchLogin } from '../redux/slices/loginSlice';
 
 interface LoginInterface {
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
 };
 
-type FormData = {
+type Data = {
   email: string;
   password: string;
 };
 
 export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
+  const dispatch = useDispatch()
+
   const [errorMessage, setErrorMessage] = useState('');
-  const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm<FormData>({
+  const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm<Data>({
     defaultValues: {
       email: '',
       password: '',
@@ -23,25 +27,26 @@ export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
     mode: 'onChange',
   });
 
-  const onSubmit = async (formData: FormData) => {
+  const onSubmit = async (formData: Data) => {
     try {
-      const data = await axios.post('/login', {...formData});
+      dispatch(fetchLogin(formData));
+    } catch (error) {}
+    // try {
+    //   // dispatch(fetchLogin(formData));
+    //   const data = await axios.post('/login', {...formData});
       
-      if ('token' in data.data) {
-        window.localStorage.setItem('logged_in', data.data.token);
-      };
+    //   if ('token' in data.data) {
+    //     window.localStorage.setItem('logged_in', data.data.token);
+    //   };
 
-      setIsAuth(true);
-    }
-    catch (err) {
-      console.log("ERROR ", err);
+    //   setIsAuth(true);
+    // }
+    // catch (err) {
+    //   console.log("ERROR ", err);
 
-      setErrorMessage('Неверный логин или пароль');
-    }
+    //   setErrorMessage('Неверный логин или пароль');
+    // }
   };
-
-  
-  const token = localStorage.getItem('logged_in');
 
   return (
     <div className='container'>
@@ -66,3 +71,4 @@ export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
     </div>
   )
 }
+

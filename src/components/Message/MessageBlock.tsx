@@ -36,6 +36,10 @@ export const MessageBlock = () => {
     setSearchMessage('');
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+  };
+
   return (
     <div className='bg-white w-[890px] relative' style={{paddingTop: '72px'}}>
       <div className='p-2 px-4 bg-white flex justify-between items-center relative z-10 shadow-sm'>
@@ -80,7 +84,7 @@ export const MessageBlock = () => {
           {messages.map((item: MessageType, index) => <MessageUser text={item.text} isUser={item.isUser}  key={index} />)}
         </div>
       </div>
-      <div className='fixed bottom-0 w-[883px] px-14 p-4 bg-white'>
+      <form className='fixed bottom-0 w-[883px] px-14 p-4 bg-white' onSubmit={handleSubmit}>
         <div className='cursor-pointer w-[40px] h-[80px] flex justify-center items-center absolute top-0 left-2'>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M19.937 8.68C19.926 8.648 19.917 8.617 19.904 8.586C19.8566 8.47747 19.7902 8.37825 19.708 8.293L13.708 2.293C13.6228 2.21078 13.5235 2.14441 13.415 2.097C13.385 2.083 13.353 2.075 13.321 2.064C13.2373 2.03553 13.1502 2.01837 13.062 2.013C13.04 2.011 13.021 2 13 2H6C4.897 2 4 2.897 4 4V20C4 21.103 4.897 22 6 22H18C19.103 22 20 21.103 20 20V9C20 8.979 19.989 8.96 19.987 8.938C19.9819 8.85016 19.9651 8.7634 19.937 8.68ZM16.586 8H14V5.414L16.586 8ZM6 20V4H12V9C12 9.26522 12.1054 9.51957 12.2929 9.70711C12.4804 9.89464 12.7348 10 13 10H18L18.002 20H6Z" fill="black"/>
@@ -94,14 +98,14 @@ export const MessageBlock = () => {
               <path d="M15 4.5C9.15 4.5 4.5 9.15 4.5 15C4.5 20.85 9.15 25.5 15 25.5C20.85 25.5 25.5 20.85 25.5 15C25.5 9.15 20.85 4.5 15 4.5ZM9 12C9 11.1 9.6 10.5 10.5 10.5C11.4 10.5 12 11.1 12 12C12 12.9 11.4 13.5 10.5 13.5C9.6 13.5 9 12.9 9 12ZM19.5 13.5C18.6 13.5 18 12.9 18 12C18 11.1 18.6 10.5 19.5 10.5C20.4 10.5 21 11.1 21 12C21 12.9 20.25 13.5 19.5 13.5Z" stroke="black" stroke-miterlimit="10"/>
             </svg>
           </div>
-          <div className='cursor-pointer w-[40px] h-[80px] flex justify-center items-center'>
+          <button type='submit' className='cursor-pointer w-[40px] h-[80px] flex justify-center items-center'>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M20 4H6C4.897 4 4 4.897 4 6V11H6V8L12.4 12.8C12.5732 12.9297 12.7837 12.9998 13 12.9998C13.2163 12.9998 13.4268 12.9297 13.6 12.8L20 8V17H12V19H20C21.103 19 22 18.103 22 17V6C22 4.897 21.103 4 20 4ZM13 10.75L6.666 6H19.334L13 10.75Z" fill="black"/>
               <path d="M2 12H9V14H2V12ZM4 15H10V17H4V15ZM7 18H11V20H7V18Z" fill="black"/>
             </svg>
-          </div>
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   )
 }

@@ -31,8 +31,14 @@ const CustomSchema = new mongoose.Schema({
         required: true,
     },
     avatarUrl: String,
-}, {
-    timestamps: true,
-});
+    newMessage: {
+        type: Object,
+        default: {},
+    },
+    status: {
+        type: String,
+        default: 'online',
+    },
+}, {minimize: false});
 
 module.exports = mongoose.model('User', CustomSchema);
