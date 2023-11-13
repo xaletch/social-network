@@ -4,7 +4,7 @@ import { Navigate, Link } from 'react-router-dom';
 import axios from '../axios';
 import { useDispatch } from 'react-redux';
 import { fetchLogin } from '../redux/slices/loginSlice';
-
+import { AnyAction } from 'redux';
 interface LoginInterface {
   isAuth: boolean,
   setIsAuth: Dispatch<SetStateAction<boolean>>,
@@ -29,23 +29,8 @@ export const LogIn: React.FC<LoginInterface> = ({ isAuth, setIsAuth }) => {
 
   const onSubmit = async (formData: Data) => {
     try {
-      dispatch(fetchLogin(formData));
+      dispatch(fetchLogin(formData) as unknown as AnyAction);
     } catch (error) {}
-    // try {
-    //   // dispatch(fetchLogin(formData));
-    //   const data = await axios.post('/login', {...formData});
-      
-    //   if ('token' in data.data) {
-    //     window.localStorage.setItem('logged_in', data.data.token);
-    //   };
-
-    //   setIsAuth(true);
-    // }
-    // catch (err) {
-    //   console.log("ERROR ", err);
-
-    //   setErrorMessage('Неверный логин или пароль');
-    // }
   };
 
   return (

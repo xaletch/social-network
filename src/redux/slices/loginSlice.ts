@@ -9,7 +9,7 @@ type FormData = {
   password: string;
 };
 
-export const fetchLogin = createAsyncThunk('user/fetchLogin', async (params) => {
+export const fetchLogin = createAsyncThunk('user/fetchLogin', async (params: FormData) => {
   const { data } = await axios.post('login', params);
   return data;
 });
